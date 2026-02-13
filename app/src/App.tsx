@@ -169,13 +169,7 @@ function App() {
         <div className="w-full max-w-md">
           {/* University Logo */}
           <div className="text-center mb-8">
-            <div className="logo-container mb-6">
-              <img 
-                src="https://image2url.com/r2/default/images/1770982578252-23778ed3-0155-41dc-bf39-84e283533ea3.png" 
-                alt="Jain University Logo" 
-                className="jain-logo"
-              />
-            </div>
+           
           </div>
 
           <Card className="login-card">
