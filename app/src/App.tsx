@@ -160,39 +160,104 @@ const navItems = [
 function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Auto-login for demo
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Changed to false to show login
 
-  // Login View
+  // Login View with Jain University Branding
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center login-background px-4">
         <div className="w-full max-w-md">
+          {/* University Logo */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-2xl">U</span>
+            <div className="logo-container mb-6">
+              <img 
+                src="https://www.genspark.ai/api/files/s/JTddWKAi" 
+                alt="Jain University Logo" 
+                className="jain-logo"
+              />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">University Admissions CRM</h1>
-            <p className="text-gray-500 mt-2">Sign in to your account</p>
           </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Welcome back</CardTitle>
-              <CardDescription>Enter your credentials to access the dashboard</CardDescription>
+
+          <Card className="login-card">
+            <CardHeader className="text-center pb-8">
+              <div className="mb-4">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 mb-4 shadow-lg">
+                  <span className="text-white font-bold text-3xl">JGI</span>
+                </div>
+              </div>
+              <CardTitle className="text-3xl font-bold text-blue-900">ADMISSION PORTAL</CardTitle>
+              <CardDescription className="text-base mt-2 tracking-widest uppercase text-gray-400">
+                Staff Single-Sign-On Experience
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={(e) => { e.preventDefault(); setIsAuthenticated(true); }} className="space-y-4">
+              <form onSubmit={(e) => { e.preventDefault(); setIsAuthenticated(true); toast.success('Login successful!'); }} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" defaultValue="admin@university.edu" />
+                  <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    Work Email
+                  </Label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      defaultValue="name@uni.edu" 
+                      className="pl-10 h-12 bg-gray-50 border-gray-200"
+                      placeholder="name@uni.edu"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" defaultValue="admin123" />
+                  <Label htmlFor="password" className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    Secure Password
+                  </Label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    <Input 
+                      id="password" 
+                      type="password" 
+                      defaultValue="••••••••" 
+                      className="pl-10 h-12 bg-gray-50 border-gray-200"
+                    />
+                  </div>
                 </div>
-                <Button type="submit" className="w-full">Sign in</Button>
+                <Button 
+                  type="submit" 
+                  className="w-full h-14 bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white font-semibold text-base shadow-lg transition-all duration-200 border-b-4 border-amber-400"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  SEND OTP VERIFICATION
+                </Button>
               </form>
-              <div className="mt-4 text-center text-sm text-gray-500">
-                <p>Demo: admin@university.edu / admin123</p>
+              
+              <div className="mt-6 flex items-center justify-center text-xs text-gray-400">
+                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                ACTIVE SESSION: 90 DAYS
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <div className="text-center text-xs text-gray-400 space-y-2">
+                  <div className="font-semibold uppercase tracking-widest">Jain (Deemed-to-be University)</div>
+                  <div className="flex items-center justify-center gap-4 text-xs">
+                    <span>SYSTEM V4.0.0</span>
+                    <span>•</span>
+                    <span>GDPR COMPLIANT</span>
+                    <span>•</span>
+                    <span>ISO 27001</span>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -1016,10 +1081,13 @@ function App() {
         <div className="h-full flex flex-col">
           <div className="h-16 flex items-center px-6 border-b border-gray-200">
             <button onClick={() => setCurrentView('dashboard')} className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">U</span>
+              <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">JGI</span>
               </div>
-              <span className="font-semibold text-gray-900">Admissions CRM</span>
+              <div className="flex flex-col items-start">
+                <span className="font-bold text-gray-900 text-sm leading-tight">JAIN</span>
+                <span className="text-xs text-gray-500 leading-tight">UNIVERSITY</span>
+              </div>
             </button>
             <button className="lg:hidden ml-auto" onClick={() => setSidebarOpen(false)}>
               <X className="w-5 h-5" />
@@ -1044,8 +1112,8 @@ function App() {
 
           <div className="p-4 border-t border-gray-200">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-gray-200 rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-gray-600">{mockUser.name.charAt(0)}</span>
+              <div className="w-9 h-9 bg-gradient-to-br from-blue-900 to-blue-700 rounded-full flex items-center justify-center">
+                <span className="text-sm font-medium text-white">{mockUser.name.charAt(0)}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 truncate">{mockUser.name}</p>
