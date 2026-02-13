@@ -7,5 +7,6 @@ __all__ = [
     'jwt_required_middleware',
     'role_required',
     'admin_required',
-    'team_lead_required'
+    'team_lead_required',
+    'manager_required'
 ]
