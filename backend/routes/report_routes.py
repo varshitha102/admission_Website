@@ -2,7 +2,8 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required
 from services import ReportService
-from middleware import manager_required
+from backend.middleware import manager_required
+
 
 report_bp = Blueprint('reports', __name__, url_prefix='/reports')
 
