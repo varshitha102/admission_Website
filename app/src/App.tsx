@@ -171,7 +171,7 @@ function App() {
           <div className="text-center mb-8">
             <div className="logo-container mb-6">
               <img 
-                src="https://www.genspark.ai/api/files/s/JTddWKAi" 
+                src="https://image2url.com/r2/default/images/1770982578252-23778ed3-0155-41dc-bf39-84e283533ea3.png" 
                 alt="Jain University Logo" 
                 className="jain-logo"
               />
