@@ -1,7 +1,8 @@
 """Main Flask application."""
 import os
 from flask import Flask, jsonify
-from config import config_by_name
+from backend.config import config_by_name
+
 from extensions import db, migrate, cors, jwt, scheduler
 from routes import auth_bp, lead_bp, application_bp, task_bp, activity_bp, report_bp, admin_bp
 from services.automation_service import AutomationService
